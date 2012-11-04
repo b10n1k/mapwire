@@ -21,3 +21,30 @@ function myloc () {
 function point (latlon) {
     map.setView(new L.LatLng(latlon), 15);
 }
+
+function togglefull(){
+    var mapelem = document.getElementById("map");
+    
+  function toggleFullScreen() {
+    if (!document.mozFullScreen && !document.webkitFullScreen) {
+      if (mapelem.mozRequestFullScreen) {
+        mapelem.mozRequestFullScreen();
+      } else {
+        mapelem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+      }
+    } else {
+      if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else {
+        document.webkitCancelFullScreen();
+      }
+    }
+  }
+  
+  document.addEventListener("keydown", function(e) {
+    if (e.keyCode == 13) {
+      toggleFullScreen();
+    }
+  }, false);
+}
+
