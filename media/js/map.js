@@ -23,28 +23,24 @@ function point (latlon) {
 }
 
 function togglefull(){
-    var mapelem = document.getElementById("map");
+    var fullscreen = document.getElementById("full");
     
-  function toggleFullScreen() {
-    if (!document.mozFullScreen && !document.webkitFullScreen) {
-      if (mapelem.mozRequestFullScreen) {
-        mapelem.mozRequestFullScreen();
-      } else {
-        mapelem.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-      }
-    } else {
-      if (document.mozCancelFullScreen) {
-        document.mozCancelFullScreen();
-      } else {
-        document.webkitCancelFullScreen();
-      }
+    if(fullscreen){
+	fullscreen.addEventListener("click",function(){
+	    var docElem=document.documentElement;
+	    if(docElem.requestFullScreen){
+		docElem.requestFullScreen();
+		}
+	    else if(docElem.mozRequestFullScreen){
+		docElem.mozRequestFullScreen();
+		}
+	    else if(docElem.webkitRequestFullScreen){
+		docElem.webkitRequestFullScreen();
+		}
+	    },false);
     }
-  }
-  
-  document.addEventListener("keydown", function(e) {
-    if (e.keyCode == 13) {
-      toggleFullScreen();
-    }
-  }, false);
+    
+    
+
 }
 

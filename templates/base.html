@@ -15,7 +15,7 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js"></script>
     <script type="text/javascript" src="/media/js/main.js"></script>
 </head>
-<body>
+<body id="main_id">
     <div id="loading">loading...</div>
 
     <div id="map"></div>
@@ -33,8 +33,8 @@
                 o
             </div>
 	    <!--issue #1-->
-            <div class="two columns fnkey icon ">
-	      <a href="#" id="full" onClick="togglefull()">v</a>
+            <div class="two columns fnkey icon">
+	      <a href="#" id="full">v</a>
             </div>
         </div>
         <div class="row collapse">
@@ -80,7 +80,7 @@
                 <div class="two columns">
                     <a href="#" class="postfix button expand icon" id="searchbutton">s</a>
                 </div>
-
+		
             </div>
         </div>
         <div class="row">
@@ -96,7 +96,6 @@
 <div id="meta" class="icon fnkey">
     <a href="#" id="meta_button">5</a>
 </div>
-
 
 <script type="text/javascript">
     <!-- initialize map -->
