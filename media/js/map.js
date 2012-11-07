@@ -1,9 +1,11 @@
 function onLocationFound(e) {
     var radius = Math.round(e.accuracy / 2);
-
+     //map.latLngToLayerPoint(e.latlng).round();
+    
     L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point").openPopup();
-
+    
     L.circle(e.latlng, radius).addTo(map);
+    L.map.update();
 }
 
 function onLocationError(e) {

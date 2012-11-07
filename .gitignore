@@ -1,8 +1,2 @@
-mapwire.db
-*.pyc
-*.pyo
-local_settings.py
-media/admin
-apache
-resources
-templates/piwik.html
+local_settings.py~
+env/

@@ -1,6 +1,7 @@
 //based on http://html5demos.com/geo
 
 function success(position) {
+    
     var s = document.querySelector('#status');
   
     //if (s.className == 'success') {
@@ -26,8 +27,12 @@ function success(position) {
     var mymark = new L.Marker(myloc);
     map.addLayer(mymark);
 */
-
+    //var LastlatLng=L
+    //if (L.latLng(position.coords.latitude, position.coords.longitude).equals()){
+    
     map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude), 15);
+	}
+
     
 }
 
@@ -39,7 +44,7 @@ function error(msg) {
 
 function get_loc() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(success, error);
+        navigator.geolocation.getCurrentPosition(success, error,{maximumAge:30000,timeout:2700});
     } else {
         error('not supported');
     }
