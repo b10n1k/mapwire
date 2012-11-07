@@ -1,2 +1,6 @@
 local_settings.py~
 env/
+media/js/#main.js# 
+media/js/#map.js#
+media/js/.#main.js 
+media/js/.#map.js
