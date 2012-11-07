@@ -1,8 +1,13 @@
 //based on http://html5demos.com/geo
 
 function success(position) {
+    
     var s = document.querySelector('#status');
-  
+    var lat=position.coords.latitude;
+    var lng=position.coords.longitude;
+    var lastPos=L.latlng(lat+lng);
+
+    if(!(L.latlng(position).equals(lastPos))){
     //if (s.className == 'success') {
     // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
         //return;
@@ -11,7 +16,7 @@ function success(position) {
     
     //s.innerHTML = "found you! "+position.coords.latitude+" "+position.coords.longitude;
     //s.className = 'success';
-    $('#status').load("/myloc/"+position.coords.latitude+"/"+position.coords.longitude+"/");
+    $('#status').load("/myloc/"+lat+"/"+lng+"/");
 /*  
     var map = new L.Map('map');
   
@@ -26,8 +31,13 @@ function success(position) {
     var mymark = new L.Marker(myloc);
     map.addLayer(mymark);
 */
-
+    //var LastlatLng=L
+    //if (L.latLng(position.coords.latitude, position.coords.longitude).equals()){
+    
     map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude), 15);
+    
+	}
+    }
     
 }
 
@@ -39,7 +49,7 @@ function error(msg) {
 
 function get_loc() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(success, error);
+        navigator.geolocation.getCurrentPosition(success, error,{maximumAge:30000,timeout:2700});
     } else {
         error('not supported');
     }
