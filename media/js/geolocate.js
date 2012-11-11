@@ -3,11 +3,7 @@
 function success(position) {
     
     var s = document.querySelector('#status');
-    var lat=position.coords.latitude;
-    var lng=position.coords.longitude;
-    var lastPos=L.latlng(lat+lng);
-
-    if(!(L.latlng(position).equals(lastPos))){
+    
     //if (s.className == 'success') {
     // not sure why we're hitting this twice in FF, I think it's to do with a cached result coming back    
         //return;
@@ -36,9 +32,7 @@ function success(position) {
     
     map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude), 15);
     
-	}
-    }
-    
+	}    
 }
 
 function error(msg) {
