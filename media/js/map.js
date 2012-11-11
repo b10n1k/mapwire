@@ -1,9 +1,15 @@
+var lastMarker;
+var lastCircle;
+
 function onLocationFound(e) {
     var radius = Math.round(e.accuracy / 2);
+    if(lastMarker){
+	map.removeLayer(lastMarker);
+	map.removeLayer(lastCircle);
+	}
+    lastMarker=L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-    L.marker(e.latlng).addTo(map).bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-    L.circle(e.latlng, radius).addTo(map);
+    lastCircle = L.circle(e.latlng, radius).addTo(map);
 }
 
 function onLocationError(e) {
